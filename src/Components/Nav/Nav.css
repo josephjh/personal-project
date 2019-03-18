@@ -1,14 +1,27 @@
 .nav-bar {
     display:flex;
     justify-content: space-between;
-    height: 60px;
     align-items: center;
-    
+    flex-direction: row
 } 
 
 .header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.link {
+    margin: 0 10px
+}
+
+.cart {
+    margin: 0 70px
 }

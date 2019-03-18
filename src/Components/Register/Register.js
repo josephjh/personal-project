@@ -8,7 +8,9 @@ class Register extends Component {
       this.state = {
         username: '',
         email:'',
-        password:''
+        password:'',
+        firstName:'',
+        lastName:''
       }
     }
 
@@ -21,8 +23,11 @@ class Register extends Component {
     register = async () => {
         let user = {
             username: this.state.username,
-            email: this.state.username,
-            password: this.state.password
+            email: this.state.email,
+            password: this.state.password,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName
+
         }
         try {
             let res = await axios.post('/api/register', user);
@@ -34,13 +39,15 @@ class Register extends Component {
     }
 
     render() {
-      const {username, email, password} = this.state
+      const {firstName, lastName, username, email, password} = this.state
       return (
         <div className="Register">
           <h1>Register</h1>
-          <input value={username} placeholder='username' onChange={e => this.handleChange('username', e.target.value)}/>
-          <input value={email} placeholder='email' onChange={e => this.handleChange('email', e.target.value)}/>
-          <input value={password} type='password' placeholder='password' onChange={e => this.handleChange('password', e.target.value)}/>
+          <input value={firstName} placeholder='First Name' onChange={e => this.handleChange('firstName', e.target.value)}/>
+          <input value={lastName} placeholder='Last Name' onChange={e => this.handleChange('lastName', e.target.value)}/>          
+          <input value={username} placeholder='Username' onChange={e => this.handleChange('username', e.target.value)}/>
+          <input value={email} placeholder='Email' onChange={e => this.handleChange('email', e.target.value)}/>
+          <input value={password} type='Password' placeholder='password' onChange={e => this.handleChange('password', e.target.value)}/>
           <button onClick={this.register}>Register</button>
         </div>
       );

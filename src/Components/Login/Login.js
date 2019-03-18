@@ -24,7 +24,6 @@ class Login extends Component {
     }
     try {
       let res = await axios.post('/api/login', user);
-      console.log(res)
       this.props.history.push('/products')
     } catch {
       alert('incorrect username or password')
@@ -36,8 +35,8 @@ class Login extends Component {
     return (
       <div className="Login">
         <h1>Login</h1>
-        <input value={username} onChange={e => this.handleChange('username', e.target.value)}/>
-        <input value={password} type='password' onChange={e => this.handleChange('password', e.target.value)}/>
+        <input value={username} placeholder='Username' onChange={e => this.handleChange('username', e.target.value)}/>
+        <input value={password} placeholder='Password' type='password' onChange={e => this.handleChange('password', e.target.value)}/>
         <button onClick={this.login}>Login</button>
         <Link to='/register'>
         <button>Register</button></Link>

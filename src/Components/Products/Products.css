@@ -1,12 +1,25 @@
+:root {
+    --mainBlue:#2a2a72;
+    --lightBlue:#009ffd;
+    --mainWhite:#f3f3f3;
+    --mainDark:#232528;
+    --mainYellow:#ffa400;
+}
+
 .container {
     display:inline;
-
+    justify-content: space-around;
+    justify-items: center;
+    font-family: 'Righteous', cursive;
+    background: var(--mainWhite);
+    color: var(--mainDark)
 }
 
-.product-name {
-    flex-direction: row;
-    /* justify-content: left */
+.single-product {
+    width: 500px;
 }
+
+
 
 .image {
     width: 500px;

@@ -29,8 +29,13 @@ class Products extends Component {
 
         {this.state.products.map(ele => 
         <div key={ele.product_id} className='container'>
-          <img className='image' src={ele.product_img} alt="Product"/>
-           <div className='product-name'>{ele.product_name}</div> <div className='description'>{ele.product_description}</div> <div className='price'>{ele.price}</div>
+          <div className='single-product'>
+            <img className='image' src={ele.product_img} alt="Product"/>
+            <div className='product-name'>{ele.product_name}</div> 
+            <div className='description'>{ele.product_description}</div> 
+            <div className='price'>{ele.price}</div>
+            <button>Add to Cart</button>
+          </div>
         </div>
         )}
           

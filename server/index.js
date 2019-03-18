@@ -3,8 +3,9 @@ require('dotenv').config()
 const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
-const session = require('express-session')
-const ctrl = require('./controller')
+const session = require('express-session');
+const uctrl = require('./user_controller');
+const pctrl = require('./product_controller')
 
 const app = express(),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
@@ -25,6 +26,9 @@ app.use(session({
     cookie: {maxAge: 1000000000000}
 }))
 
-app.get('/api/products', ctrl.getProducts)
-app.post('/api/login', ctrl.login)
-app.post('/api/register', ctrl.register)
+app.get('/api/products', uctrl.getProducts)
+app.get('/api/session', uctrl.session)
+app.post('/api/login', uctrl.login)
+app.post('/api/register', uctrl.register)
+
+app.post('/api/product', pctrl.addProduct)

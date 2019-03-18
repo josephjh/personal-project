@@ -7,6 +7,7 @@ import Products from './Components/Products/Products';
 import Checkout from './Components/Checkout/Checkout';
 import Profile from './Components/Profile/Profile';
 import Register from './Components/Register/Register'
+import MyStore from './Components/MyStore/MyStore'
 
 export default (
     <Switch>
@@ -17,6 +18,8 @@ export default (
         <Route path='/checkout' component={Checkout}/>
         <Route path='/profile' component={Profile} />
         <Route path='/register' component={Register}/>
+        <Route path='/mystore' component={MyStore}/>
+        <Route path='*' component={() => '404 NOT FOUND'} />
     </Switch>
 ) 
 
