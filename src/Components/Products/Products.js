@@ -12,7 +12,6 @@ class Products extends Component {
    
   componentDidMount(){
     axios.get('/api/products').then(res => {
-      console.log(22222, res.data)
       this.setState({
         products: res.data
       })
@@ -20,25 +19,21 @@ class Products extends Component {
   }
 
     render() {
-      // const {product_id, price, product_description, product_name} = this.state.products
-      console.log(this.state.products)
       return (
         <div className="Products">
           <h1>Products</h1>
-          {console.log(111111, this.state.products)}
 
-        {this.state.products.map(ele => 
-        <div key={ele.product_id} className='container'>
-          <div className='single-product'>
-            <img className='image' src={ele.product_img} alt="Product"/>
-            <div className='product-name'>{ele.product_name}</div> 
-            <div className='description'>{ele.product_description}</div> 
-            <div className='price'>{ele.price}</div>
-            <button>Add to Cart</button>
+
+          <div className='container'>
+          {this.state.products.map(ele => 
+            <div className='single-product' key={ele.product_id}>
+              <div className='image' style={{backgroundImage: `url(${ele.product_img})`}} alt="Product"> </div>
+              <div className='product-name'>{ele.product_name}</div>
+              <div className='price'>${ele.price}.00</div>
+              <button className='cart-button'>Add to Cart</button>
+            </div>
+          )}
           </div>
-        </div>
-        )}
-          
         </div>
       );
     }

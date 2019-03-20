@@ -3,34 +3,47 @@ import './MyStore.css'
 import axios from 'axios';
 
 class MyStore extends Component {
-    constructor(){
-      super()
+  constructor(){
+    super()
 
-      this.state = {
-        productName:'',
-        price:'',
-        productImage:'',
-        description:'',
-        type:'',
-        make:''
-      }
+    this.state = {
+      products: []
     }
+  }
 
-    handleChange(prop, value) {
-      this.setState({
-        [prop]: value
+    componentDidMount(){
+      axios.get('/api/mystore').then(res => {
+        console.log(111111, res.data)
+        this.setState({
+          products: res.data
+        })
       })
     }
 
-    addItem = async() => {
-      let item = {
-        productName: this.state.productName,
-        price: this.state.price,
-        productImage: this.state.productImage,
-        type:this.state.type,
-        make:this.state.make,
-        description: this.state.description
+    delete = async (id) => {
+      try {
+        let res = await axios.delete(`/api/products/${id}`)
+        this.setState({
+          products: res.data
+        })
+      } catch {
+        alert('Cannot Delete')
       }
+    }
+
+    addItem = async (e) => {
+      e.preventDefault();
+      const elements = e.target.elements;
+      console.log(elements)
+      let item = {
+        productName: elements.product_name.value,
+        price: elements.price.value,
+        productImage: elements.product_image.value,
+        type: elements.type.value,
+        make: elements.make.value,
+        description: elements.description.value
+      }
+      e.target.reset()
       try {
         let res = await axios.post('/api/product', item);
         console.log(res)
@@ -40,38 +53,60 @@ class MyStore extends Component {
     }
 
     render() {
-      const {productName, price, productImage, type, make, description} = this.state;
       return (
         <div className="MyStore">
-          <div>Add Item
-            <select value={type} name='Type' onChange={e => this.handleChange('type', e.target.value)}>
-              <option value='-Select Make-'>-Select Make-</option>
-              <option value='Accessories'>Accessories</option>
-              <option value='Armor'>Armor</option>
-              <option value='Exterior'>Exterior</option>
-              <option value='Interior'>Interior</option>
-              <option value='Lighting'>Lighting</option> 
-              <option value='Recovery'>Recovery</option>
-              <option value='Swag'>Swag</option>
+          <form onSubmit={e => this.addItem(e)}>
+            <select required defaultValue='' name='type'>
+              <option disabled defaultValue=''>-Select Type-</option>
+              <option defaultValue='Accessories'>Accessories</option>
+              <option defaultValue='Armor'>Armor</option>
+              <option defaultValue='Exterior'>Exterior</option>
+              <option defaultValue='Interior'>Interior</option>
+              <option defaultValue='Lighting'>Lighting</option> 
+              <option defaultValue='Recovery'>Recovery</option>
+              <option defaultValue='Swag'>Swag</option>
             </select>
-            <select value={make} name='Make' onChange={e => this.handleChange('make', e.target.value)}>
-              <option value='-Select Make-'>-Select Make-</option>
-              <option value='Chevy'>Chevy</option>
-              <option value='Ford'>Ford</option>
-              <option value='Jeep'>Jeep</option>
-              <option value='LandRover'>Land Rover</option>
-              <option value='Toyota'>Toyota</option>
-              <option value='Other'>Other</option>
+            <select required defaultValue='' name='make'>
+              <option disabled defaultValue=''>-Select Make-</option>
+              <option defaultValue='Chevy'>Chevy</option>
+              <option defaultValue='Ford'>Ford</option>
+              <option defaultValue='Jeep'>Jeep</option>
+              <option defaultValue='LandRover'>Land Rover</option>
+              <option defaultValue='Toyota'>Toyota</option>
+              <option defaultValue='Other'>Other</option>
             </select>
-            <input value={productName} placeholder='Product Name' onChange={e => this.handleChange('productName', e.target.value)}/>
-            <input value={price} placeholder='Price' onChange={e => this.handleChange('price', e.target.value)}/>
-            <input value={productImage} placeholder='Product Image' onChange={e => this.handleChange('productImage', e.target.value)}/>
-            <input value={description} placeholder='Description' onChange={e => this.handleChange('description', e.target.value)}/>
-            <button onClick={this.addItem}>Add Item</button>
+            <input name='products container' placeholder='Product Name'/>
+            <input name='price' placeholder='Price'/>
+            <input name='product_image'  placeholder='Product Image'/>
+            <input name='description' placeholder='Description'/>
+            <button type='submit'>Add Item</button>
+          </form>
+
+          <div className='store-container'>
+            {this.state.products.map(ele => 
+              <div className='single-product' key={ele.product_id}>
+                <div className='product-name'>{ele.product_name}</div>
+                <div className='image'>{ele.product_img}</div>
+                <div className='price'>{ele.price}.00</div>
+                <div classname='description'>{ele.product_description}</div>
+                <button>Edit</button>
+                <button onClick={() => this.delete(ele.product_id)}>Delete</button>
+              </div>
+            )}
           </div>
         </div>
       );
     };
   };
   
-  export default MyStore;
+  // function mapStateToProps(reduxState){
+  //   return reduxState
+  // };
+
+  // const mapDispatchToProps = {
+  //   getUser
+  // };
+  
+  // export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyStore));
+
+  export default MyStore

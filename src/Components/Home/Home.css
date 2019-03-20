@@ -1,16 +1,16 @@
-.background-photo {
+.Home .background-photo {
     height: 100vh;
     width: 100vw
 }
 
-.container {
+.Home .container {
     height: 200px;
     display: flex;
     flex-direction: row;
     justify-content: space-around
 }
 
-.category {
+.Home .category {
     height: 160px;
     width: 300px;
     flex-direction: column;

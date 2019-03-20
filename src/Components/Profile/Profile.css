@@ -1,6 +1,7 @@
-.container {
+.profile {
     display: flex;
-    align-items: row
+    align-items: row;
+    flex-wrap: wrap;
 }
 
 #store {
