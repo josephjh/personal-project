@@ -9,8 +9,8 @@ class Register extends Component {
         username: '',
         email:'',
         password:'',
-        firstName:'',
-        lastName:''
+        first_name:'',
+        last_name:''
       }
     }
 
@@ -25,8 +25,8 @@ class Register extends Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName
+            first_name: this.state.first_name,
+            last_name: this.state.last_name
 
         }
         try {
@@ -39,13 +39,13 @@ class Register extends Component {
     }
 
     render() {
-      const {firstName, lastName, username, email, password} = this.state
+      const {first_name, last_name, username, email, password} = this.state
       return (
         <div className="Register">
           <h1>Register</h1>
           <form onSubmit={this.register}>
-            <input value={firstName} placeholder='First Name' onChange={e => this.handleChange('firstName', e.target.value)}/>
-            <input value={lastName} placeholder='Last Name' onChange={e => this.handleChange('lastName', e.target.value)}/>          
+            <input value={first_name} placeholder='First Name' onChange={e => this.handleChange('first_name', e.target.value)}/>
+            <input value={last_name} placeholder='Last Name' onChange={e => this.handleChange('last_name', e.target.value)}/>          
             <input value={username} placeholder='Username' onChange={e => this.handleChange('username', e.target.value)}/>
             <input value={email} placeholder='Email' onChange={e => this.handleChange('email', e.target.value)}/>
             <input value={password} type='Password' placeholder='password' onChange={e => this.handleChange('password', e.target.value)}/>

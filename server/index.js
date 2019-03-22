@@ -28,6 +28,7 @@ app.use(session({
 }))
 
 app.get('/api/session', uctrl.session)
+app.delete('/api/session', uctrl.logout)
 app.post('/api/login', uctrl.login)
 app.post('/api/register', uctrl.register)
 
@@ -35,5 +36,6 @@ app.get('/api/products', pctrl.getProducts)
 app.get('/api/myStore', pctrl.getMyStore)
 app.post('/api/product', pctrl.addProduct)
 app.delete('/api/products/:id', pctrl.deleteProduct)
+app.put('/api/products/:id', pctrl.updateProduct)
 
 app.get('/api/cart', cctrl.getCart)

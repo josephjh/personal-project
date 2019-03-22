@@ -1,10 +1,22 @@
+.footer {
+    clear: both;
+    position: relative;
+    height: 35px;
+    
+}
+
 .widget-container {
     display:flex;
     height: 200px;
     justify-content: space-evenly;
+    align-content: space-between;
+    width: 100%;
+    background-color: darkgray;
+
 }
 
-/* .email.input {
-    
-} */
+.hr {
+    background-color: darkgray
+}
+
 

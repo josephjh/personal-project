@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
- 
-class backCarousel extends Component {
-    render() {
-        return (
-            <Carousel>
-                <div>
-                    <img src="https://images.pexels.com/photos/1149137/pexels-photo-1149137.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt='Tacoma'/>
-                    <p className="Toyota1">Legend 1</p>
-                </div>
-                {/* <div>
-                    <img src="assets/2.jpeg" />
-                    <p className="legend">Legend 2</p>
-                </div>
-                <div>
-                    <img src="assets/3.jpeg" />
-                    <p className="legend">Legend 3</p>
-                </div> */}
-            </Carousel>
-        );
-    }
-};
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
 
-export default backCarousel
+export default () => (
+  <Carousel autoPlay>
+    <div>
+    <img src='https://images.pexels.com/photos/1149055/pexels-photo-1149055.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Toyota'/>
+    {/* <p className="legend"></p> */}
+    </div>
+    <div>
+    <img src='https://images.pexels.com/photos/714023/pexels-photo-714023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Night 4Runner'/>
+    {/* <p className="legend"></p> */}
+    </div>
+    <div>
+    <img src='https://images.unsplash.com/photo-1500381369072-1e8259ca5ed4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1504&q=80' alt='Land Cruiser'/>
+    {/* <p className="legend"></p> */}
+    </div>
+    <div>
+    <img src='https://images.pexels.com/photos/1149058/pexels-photo-1149058.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Chevy'/>
+    {/* <p className="legend"></p> */}
+    </div>
+    <div>
+    <img src='https://images.pexels.com/photos/1149129/pexels-photo-1149129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Crawling Jeep'/>
+    {/* <p className="legend"></p> */}
+    </div>
+    
+  </Carousel>
+);
+

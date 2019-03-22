@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import './MyStore.css'
+import './MyStore.css';
 import axios from 'axios';
+import StoreProducts from '../StoreProducts/StoreProducts';
 
 class MyStore extends Component {
   constructor(){
@@ -19,6 +20,14 @@ class MyStore extends Component {
         })
       })
     }
+    
+    updateProduct(id, product){
+      axios.put(`/api/products/${id}`, {product}).then(res => {
+        this.setState({
+          products:res.data
+        })
+      })
+    }
 
     delete = async (id) => {
       try {
@@ -34,9 +43,9 @@ class MyStore extends Component {
     addItem = async (e) => {
       e.preventDefault();
       const elements = e.target.elements;
-      console.log(elements)
+      console.log(2222, elements)
       let item = {
-        productName: elements.product_name.value,
+        product_name: elements.product_name.value,
         price: elements.price.value,
         productImage: elements.product_image.value,
         type: elements.type.value,
@@ -46,7 +55,9 @@ class MyStore extends Component {
       e.target.reset()
       try {
         let res = await axios.post('/api/product', item);
-        console.log(res)
+        this.setState({
+          products: res.data
+        })        
       } catch (err) {
         alert('could not add item')
       }
@@ -75,38 +86,17 @@ class MyStore extends Component {
               <option defaultValue='Toyota'>Toyota</option>
               <option defaultValue='Other'>Other</option>
             </select>
-            <input name='products container' placeholder='Product Name'/>
+            <input name='product_name' placeholder='Product Name'/>
             <input name='price' placeholder='Price'/>
             <input name='product_image'  placeholder='Product Image'/>
             <input name='description' placeholder='Description'/>
             <button type='submit'>Add Item</button>
           </form>
-
-          <div className='store-container'>
-            {this.state.products.map(ele => 
-              <div className='single-product' key={ele.product_id}>
-                <div className='product-name'>{ele.product_name}</div>
-                <div className='image'>{ele.product_img}</div>
-                <div className='price'>{ele.price}.00</div>
-                <div classname='description'>{ele.product_description}</div>
-                <button>Edit</button>
-                <button onClick={() => this.delete(ele.product_id)}>Delete</button>
-              </div>
-            )}
-          </div>
+            <StoreProducts products={this.state.products}/>
         </div>
       );
     };
   };
   
-  // function mapStateToProps(reduxState){
-  //   return reduxState
-  // };
-
-  // const mapDispatchToProps = {
-  //   getUser
-  // };
-  
-  // export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MyStore));
 
   export default MyStore

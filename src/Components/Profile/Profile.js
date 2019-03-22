@@ -4,17 +4,13 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getUser} from '../../Ducks/userReducer'
 import {Link, Redirect} from 'react-router-dom';
+// import axios from 'axios';
 
 class Profile extends Component {
-
-  // componentDidMount(){
-  //   axios.get('/api/session').then(res => {
-  //     this.props.getUser(res.data);
-  //   })
-  // };
   
     render() {
-      if(!this.props.user.firstName) {
+      if(!this.props.user.first_name) {
+        console.log(44444, this.props.user_id)
         return <Redirect to='/login'/>
       }
       return (
@@ -26,7 +22,7 @@ class Profile extends Component {
                 </div>
                 <div className='section2'>
                   <div>Account Details:
-                    <div className='info'>{this.props.user.firstName} {this.props.last_name}</div>
+                    <div className='info'>{this.props.user.first_name} {this.props.last_name}</div>
                     <div className='info'>{this.props.user.username}</div>
                     <div className='info'>{this.props.user.email}</div>
                   </div>

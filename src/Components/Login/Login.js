@@ -27,7 +27,7 @@ class Login extends Component {
     try {
       let res = await axios.post('/api/login', user);
       this.props.getUser(res.data)
-      this.props.history.push('/products')
+      this.props.history.push('/profile')
     } catch {
       alert('incorrect username or password')
     }
@@ -45,7 +45,6 @@ class Login extends Component {
         <Link to='/register'>
         <button>Register</button></Link>
       </form>
-        
       </div>
     );
   }
