@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class StoreProduct extends Component {
     constructor(props){
@@ -7,28 +6,51 @@ class StoreProduct extends Component {
 
         this.state = {
             editing: false,
-            product:[]
+            product_name:this.props.product_name,
+            product_img: this.props.product_img,
+            price: this.props.price,
+            product_description: this.props.product_description
         }
     }
 
-    handleProduct(value){
-        this.setState({
-            product: value
-        })
-    }
-
-    setEdit(){
+    setEdit= () => {
         this.setState({
             editing: true
         })
     }
 
-    updateProduct(product_id){
-        const {product} = this.state;
-        this.props.update(product_id, product);
+    handleChange= (e) => {
+        this.setState({
+            [e.target.id] : e.target.value
+        })
+        
+    }
+
+    updateProduct(){
+        const {product_name, product_img, price, product_description} = this.props.products;
+        this.props.update(product_name, product_img, price, product_description);
+        this.setState({
+            editing: false
+        })
+    }
+
+
+    submitForm = (e) => {
+        e.preventDefault()
+        const {product_name, product_img, price, product_description} = this.state
+
+        let product = {
+            product_name, product_img, price, product_description
+        }
+
+        this.props.update(this.props.id, product)
+
         this.setState({
             editing: false,
-            product:[]
+            product_name:'',
+            product_img:'',
+            price: 0,
+            product_description:''
         })
     }
 
@@ -37,15 +59,24 @@ class StoreProduct extends Component {
         <div>
             <div>
                 <div>{this.state.editing ? (
-                    <form onSubmit={this.updateProduct}>
-                        <input value={this.state.product.product_name}></input>
-                        <input value={this.state.product.product_img}/>
-                        <input value={this.state.product.price}/>
-                        <input value={this.state.product.product_description}/>
+                    <form onSubmit={this.submitForm}>
+                        <input placeholder='Product Name' id='product_name' onChange={this.handleChange} initialValue={this.props.product_name} value={this.state.product_name}></input>
+                        <input placeholder='Image'id='product_img' onChange={this.handleChange} value={this.state.product_img}/>
+                        <input placeholder='Price'id='price' onChange={this.handleChange} value={this.state.price}/>
+                        <input placeholder='Description'id='product_description' onChange={this.handleChange} initialValue={this.props.product_description} value={this.state.product_description}/>
                         <button type="submit">Update</button>
+                        <button onClick={() => this.props.delete(this.props.id)}>Delete</button>
+
                     </form>
                     ) : (
-                    <div>{product}</div>
+                        <div>
+                            <div>{this.props.product_name}</div>
+                            <div>{this.props.product_img}</div>
+                            <div>{this.props.price}</div>
+                            <div>{this.props.product_description}</div>
+                    <button onClick={this.setEdit}>Edit</button>
+                    </div>
+                    
                     )}
                 </div>
             </div>
@@ -55,3 +86,5 @@ class StoreProduct extends Component {
     }
         
 }
+
+export default StoreProduct

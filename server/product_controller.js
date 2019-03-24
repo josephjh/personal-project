@@ -1,10 +1,12 @@
 module.exports = {
     addProduct: async (req, res) => {
+        console.log(555555, req.body)
         const db = req.app.get('db');
         const {user_id} = req.session.user
-        const {productName, price, productImage, type, make, description} = req.body
-        let item = db.add_Product({productName, price, productImage, type, make, description, user_id})
-        db.getMyStore({user_id}).then(resp => {
+        const {product_name, price, product_img, type, make, product_description} = req.body
+        let item = {product_name, price, product_img, type, make, product_description, user_id}
+        db.add_Product(item).then(resp => {
+            console.log(3333333333, resp)
             res.status(200).send(resp)
         })
     },
@@ -25,21 +27,23 @@ module.exports = {
         })
     },
     deleteProduct: (req, res) => {
+        console.log(555555, req)
         const db = req.app.get('db');
         const {id} = req.params;
-        const {user_id} = req.session.user;
-        req.params.id = parseInt(req.params.id);
 
-        db.deleteProduct({product_id:id, user_id}).then(resp => {
+        db.deleteProduct({product_id:id, user_id: req.session.user.user_id}).then(resp => {
             res.status(200).send(resp)
         })
     },
     updateProduct: (req, res) => {
         const db = req.app.get('db');
-        const {product_id} = req.params;
+        const {id} = req.params;
+        console.log(req.body)
         const {product_name, product_img, price, product_description} = req.body;
+        const {user_id} = req.session.user;
+        console.log(product_name)
 
-        db.updateProduct([ product_id], product_name, product_img, price, product_description)
+        db.updateProduct({user_id, id, product_name, product_img, price, product_description})
         .then(products => {
             res.status(200).send(products)
         })

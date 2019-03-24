@@ -5,7 +5,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {getUser} from '../../Ducks/userReducer';
-
+import SearchBar from '../SearchBar/SearchBar'
 
 class Nav extends Component {
 
@@ -22,8 +22,7 @@ class Nav extends Component {
                 </div>
                 <hr></hr>
                 <div className='search-bar'>
-                    <input />
-                    <button>Search</button>
+                    <SearchBar/>
                 </div>
                 <div className='header'>
                     <div className='links'>

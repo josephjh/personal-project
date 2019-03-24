@@ -4,13 +4,11 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getUser} from '../../Ducks/userReducer'
 import {Link, Redirect} from 'react-router-dom';
-// import axios from 'axios';
 
 class Profile extends Component {
   
     render() {
       if(!this.props.user.first_name) {
-        console.log(44444, this.props.user_id)
         return <Redirect to='/login'/>
       }
       return (

@@ -1,28 +1,18 @@
-const initialState = {
-    first_name:'',
-    last_name:'',
-    username:'',
-    email:''
-}
+const initialState = []
 
-// const ADD_TO_CART = 'ADD_TO_CART';
-const SET_USER = 'SET_USER';
-const GET_USER = 'GET_USER'
+const SET_CART = 'SET_CART'
 
-export function getUser(user){
+export function setCart(cart){
     return {
-        type: GET_USER,
-        payload: user
+        type: SET_CART,
+        payload: cart
     }
 }
 
-export default function userReducer(state = initialState, action) {
+export default function cartReducer(state = initialState, action) {
     switch(action.type) {
-        case SET_USER:
-            return {...state.user, ...action.payload}
-        case GET_USER:
-            const {first_name, last_name, username, email} = action.payload;
-            return {...state, first_name, last_name, username, email}
+        case SET_CART:
+            return [...action.payload]
         default:
             return state
     }

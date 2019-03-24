@@ -10,72 +10,76 @@ class MyStore extends Component {
     this.state = {
       products: []
     }
+
+    this.addProduct = this.addProduct.bind(this)
+    this.updateProduct = this.updateProduct.bind(this)
+    this.deleteProduct = this.deleteProduct.bind(this)
   }
 
-    componentDidMount(){
-      axios.get('/api/mystore').then(res => {
-        console.log(111111, res.data)
-        this.setState({
-          products: res.data
-        })
+     getProducts = () => axios.get('/api/mystore').then(res => {
+      this.setState({
+        products: res.data
       })
+    })
+
+    componentDidMount(){
+      this.getProducts()
     }
     
     updateProduct(id, product){
-      axios.put(`/api/products/${id}`, {product}).then(res => {
+      axios.put(`/api/products/${id}`, product).then(res => {
         this.setState({
           products:res.data
         })
       })
     }
 
-    delete = async (id) => {
-      try {
-        let res = await axios.delete(`/api/products/${id}`)
+    deleteProduct(id){
+      console.log(id)
+      axios.delete(`/api/product/${id}`).then(res => {
         this.setState({
           products: res.data
         })
-      } catch {
-        alert('Cannot Delete')
-      }
+      })
     }
 
-    addItem = async (e) => {
+    async addProduct(e) {
       e.preventDefault();
       const elements = e.target.elements;
-      console.log(2222, elements)
       let item = {
         product_name: elements.product_name.value,
         price: elements.price.value,
-        productImage: elements.product_image.value,
+        product_img: elements.product_image.value,
         type: elements.type.value,
         make: elements.make.value,
-        description: elements.description.value
+        product_description: elements.description.value
       }
       e.target.reset()
       try {
         let res = await axios.post('/api/product', item);
-        this.setState({
-          products: res.data
-        })        
+        this.getProducts()
+        console.log(res.data)       
       } catch (err) {
         alert('could not add item')
       }
     }
 
     render() {
+      console.log(this.state.products)
       return (
         <div className="MyStore">
-          <form onSubmit={e => this.addItem(e)}>
+          <form onSubmit={this.addProduct}>
             <select required defaultValue='' name='type'>
               <option disabled defaultValue=''>-Select Type-</option>
               <option defaultValue='Accessories'>Accessories</option>
-              <option defaultValue='Armor'>Armor</option>
+              <option defaultValue='Performance'>Armor</option>
               <option defaultValue='Exterior'>Exterior</option>
               <option defaultValue='Interior'>Interior</option>
               <option defaultValue='Lighting'>Lighting</option> 
-              <option defaultValue='Recovery'>Recovery</option>
+              <option defaultValue='Recovery Gear'>Recovery Gear</option>
               <option defaultValue='Swag'>Swag</option>
+              <option defaultValue='Camping'>Camping</option>
+              <option defaultValue='Sound System'>Sound System</option>
             </select>
             <select required defaultValue='' name='make'>
               <option disabled defaultValue=''>-Select Make-</option>
@@ -92,7 +96,7 @@ class MyStore extends Component {
             <input name='description' placeholder='Description'/>
             <button type='submit'>Add Item</button>
           </form>
-            <StoreProducts products={this.state.products}/>
+            <StoreProducts className='store-product' update={this.updateProduct} delete={this.deleteProduct} products={this.state.products}/>
         </div>
       );
     };

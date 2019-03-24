@@ -17,8 +17,14 @@ export function getUser(user){
     };
 };
 
+export function setUser(user){
+    return {
+        type: SET_USER,
+        payload: user
+    };
+};
+
 export default function userReducer(state = initialState, action) {
-    console.log(action)
     switch(action.type) {
         case SET_USER:
             return {...state.user, ...action.payload}

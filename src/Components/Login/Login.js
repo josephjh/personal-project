@@ -28,6 +28,8 @@ class Login extends Component {
       let res = await axios.post('/api/login', user);
       this.props.getUser(res.data)
       this.props.history.push('/profile')
+      const cartResponse = await axios.get('/api/cart')
+      this.props.setCart(cartResponse.data)
     } catch {
       alert('incorrect username or password')
     }
