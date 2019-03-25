@@ -28,6 +28,8 @@ app.use(session({
     cookie: {maxAge: 1000000000000}
 }))
 
+app.use( express.static(`${__dirname}/../build`) )
+
 app.get('/api/session', uctrl.session)
 app.delete('/api/session', uctrl.logout)
 app.post('/api/login', uctrl.login)
