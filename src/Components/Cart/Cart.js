@@ -48,10 +48,9 @@ class Cart extends Component {
             <button onClick={() => this.remove(product.cart_id)}>REMOVE</button>
             </div>
             )}
-            <div>Subtotal</div>
-            <div>${this.subTotal()}.00</div>
             </div>
             <div>
+              <h3>Subtotal: ${this.subTotal()}.00</h3>
             {this.subTotal() !== 0 ? 
             <StripeCheckout
                name="UTOR"

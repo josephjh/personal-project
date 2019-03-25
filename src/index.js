@@ -5,7 +5,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {HashRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import Store from './Ducks/Store'
+import Store from './Ducks/Store';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
     <Provider store={Store}>

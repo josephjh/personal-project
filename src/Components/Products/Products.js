@@ -4,6 +4,7 @@ import './Products.css';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {setCart} from '../../Ducks/cartReducer';
+import {toast, ToastContainer} from 'react-toastify';
 
 class Products extends Component {
   constructor(){
@@ -24,6 +25,7 @@ class Products extends Component {
   handleAddToCart = async (product_id) => {
     try {
       const response = await axios.post('/api/cart', {product_id})
+      toast.info('Added to Cart')
       this.props.setCart(response.data)
     } catch (err) {
       alert('could not add to cart')
@@ -59,6 +61,7 @@ class Products extends Component {
             </div>
           )}
           </div>
+          <ToastContainer/>
         </div>
       );
     }

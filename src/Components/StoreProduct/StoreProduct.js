@@ -97,13 +97,13 @@ class StoreProduct extends Component {
                     </form>
                     ) : (
                     <div className='store-product'>
-                        <div className='container'>
-                            <div>{this.props.type}</div>
-                            <div>{this.props.make}</div>
-                            <div>{this.props.product_name}</div>
-                            <div style={{backgroundImage: `url(${this.props.product_img})`}} alt="Product"></div>
-                            <div>{this.props.price}</div>
-                            <div>{this.props.product_description}</div>
+                        <div className='mystore-single-container'>
+                            <div className='mystore-single-product'>{this.props.type}</div>
+                            <div className='mystore-single-product'>{this.props.make}</div>
+                            <div className='mystore-single-product'>{this.props.product_name}</div>
+                            <div className='mystore-single-product' style={{backgroundImage: `url(${this.props.product_img})`}} alt="Product"></div>
+                            <div className='mystore-single-product'>{this.props.price}</div>
+                            <div className='mystore-single-product'>{this.props.product_description}</div>
                             <button onClick={this.setEdit}>Edit</button>
                         </div>
                     </div>

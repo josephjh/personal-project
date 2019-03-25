@@ -11,6 +11,8 @@ class Nav extends Component {
 
     handleLogout(){
         axios.delete('/api/session')
+        window.location.reload()
+
     }
 
     render() {
@@ -29,7 +31,7 @@ class Nav extends Component {
                         {!this.props.user.first_name ?
                         <Link to='/login' className='link' style={{textDecoration:'none'}}> <h2>  Login  </h2> </Link>
                         :
-                        <button className='logout-button' onClick={this.handleLogout}>Logout</button>
+                        <Link to='/' className='link' style={{fontSize:16}}onClick={this.handleLogout}><h2>Logout</h2></Link>
                         }
                         <Link to='/cart' className='cart' style={{textDecoration:'none', fontSize:35}}> =<i className='fa fa-shopping-cart'></i></Link>
                     </div>

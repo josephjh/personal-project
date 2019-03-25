@@ -72,7 +72,7 @@ class MyStore extends Component {
           <hr></hr>
           <form className='container'onSubmit={this.addProduct}>
             <select className='select-box'required defaultValue='' name='type'>
-              <option disabled defaultValue=''>-Select Type-</option>
+              <option defaultValue=''>-Select Type-</option>
               <option defaultValue='Accessories'>Accessories</option>
               <option defaultValue='Camping'>Camping</option>
               <option defaultValue='Exterior'>Exterior</option>
@@ -83,7 +83,7 @@ class MyStore extends Component {
               <option defaultValue='Swag'>Swag</option>
             </select>
             <select className='select-box' required defaultValue='' name='make'>
-              <option disabled defaultValue=''>-Select Make-</option>
+              <option defaultValue=''>-Select Make-</option>
               <option defaultValue='Chevy'>Chevy</option>
               <option defaultValue='Ford'>Ford</option>
               <option defaultValue='Hummer'>Hummer</option>
@@ -100,7 +100,9 @@ class MyStore extends Component {
             <button type='submit' className='add-new-product-button'>Add Item</button>
           </form>
           <hr></hr>
+          <div className="mystore-container">
             <StoreProducts className='store-product' update={this.updateProduct} delete={this.deleteProduct} products={this.state.products}/>
+          </div>
         </div>
       );
     };

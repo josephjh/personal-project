@@ -2,7 +2,7 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
 export default () => (
-  <Carousel autoPlay>
+  <Carousel autoPlay showArrows={false}>
     <div>
     <img src='https://images.pexels.com/photos/1149055/pexels-photo-1149055.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Toyota'/>
     {/* <p className="legend"></p> */}
