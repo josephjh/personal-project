@@ -20,7 +20,6 @@ module.exports = {
         const db = req.app.get('db');
         let {cart_id} = req.params;
         const {user_id} = req.session.user
-        console.log(2222222,cart_id)
         
         await db.removeFromCart({cart_id})
         const resp = await db.getCart({user_id})

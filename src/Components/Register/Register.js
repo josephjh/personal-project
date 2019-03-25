@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Register.css'
 
 class Register extends Component {
     constructor(){
@@ -41,16 +42,18 @@ class Register extends Component {
     render() {
       const {first_name, last_name, username, email, password} = this.state
       return (
-        <div className="Register">
-          <h1>Register</h1>
-          <form onSubmit={this.register}>
-            <input value={first_name} placeholder='First Name' onChange={e => this.handleChange('first_name', e.target.value)}/>
-            <input value={last_name} placeholder='Last Name' onChange={e => this.handleChange('last_name', e.target.value)}/>          
-            <input value={username} placeholder='Username' onChange={e => this.handleChange('username', e.target.value)}/>
-            <input value={email} placeholder='Email' onChange={e => this.handleChange('email', e.target.value)}/>
-            <input value={password} type='Password' placeholder='password' onChange={e => this.handleChange('password', e.target.value)}/>
-            <button type='submit'>Register</button>
-          </form>
+        <div className="register-container">
+          <div className='register'>
+            <form className='register-submit' onSubmit={this.register}>
+              <input value={first_name} placeholder='First Name' onChange={e => this.handleChange('first_name', e.target.value)}/>
+              <input value={last_name} placeholder='Last Name' onChange={e => this.handleChange('last_name', e.target.value)}/>          
+              <input value={username} placeholder='Username' onChange={e => this.handleChange('username', e.target.value)}/>
+              <input value={email} placeholder='Email' onChange={e => this.handleChange('email', e.target.value)}/>
+              <input value={password} type='Password' placeholder='password' onChange={e => this.handleChange('password', e.target.value)}/>
+              <button className='register-button' type='submit'>Register</button>
+            </form>
+          </div>
+            
         </div>
       );
     };

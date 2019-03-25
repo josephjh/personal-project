@@ -6,7 +6,8 @@ const massive = require('massive');
 const session = require('express-session');
 const uctrl = require('./user_controller');
 const pctrl = require('./product_controller');
-const cctrl = require('./cartController')
+const cctrl = require('./cartController');
+const sctrl = require('./stripeController');
 
 const app = express(),
     { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
@@ -41,3 +42,5 @@ app.put('/api/products/:id', pctrl.updateProduct)
 app.get('/api/cart', cctrl.getCart)
 app.post('/api/cart', cctrl.addToCart)
 app.delete('/api/cart/:cart_id', cctrl.removeFromCart)
+
+app.post('/api/stripe', sctrl.handlePayment)

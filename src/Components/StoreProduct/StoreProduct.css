@@ -1,0 +1,14 @@
+.select-box {
+    margin: 0 20px
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.update-button {
+    padding: 0 20px;
+}

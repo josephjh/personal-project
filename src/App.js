@@ -20,7 +20,6 @@ class App extends Component {
       this.props.setCart(cartResponse.data)
     } catch (err) {
       console.log(err)
-      alert('didnt work my guy')
     }
   }
 

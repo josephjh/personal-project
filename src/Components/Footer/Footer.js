@@ -23,8 +23,8 @@ function Footer() {
                         </div>
                     </div> 
                     <hr className='hr'></hr>
+                    <hr></hr>
                 </div>
-                <hr></hr>
             </div>
         )
     // }

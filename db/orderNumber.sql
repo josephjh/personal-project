@@ -1,0 +1,1 @@
+insert into orders default values returning order_id

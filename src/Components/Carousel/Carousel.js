@@ -8,7 +8,7 @@ export default () => (
     {/* <p className="legend"></p> */}
     </div>
     <div>
-    <img src='https://images.pexels.com/photos/714023/pexels-photo-714023.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Night 4Runner'/>
+    <img src='https://images.pexels.com/photos/1450230/pexels-photo-1450230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940' alt='Defender'/>
     {/* <p className="legend"></p> */}
     </div>
     <div>

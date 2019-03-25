@@ -1,12 +1,10 @@
 module.exports = {
     addProduct: async (req, res) => {
-        console.log(555555, req.body)
         const db = req.app.get('db');
         const {user_id} = req.session.user
         const {product_name, price, product_img, type, make, product_description} = req.body
         let item = {product_name, price, product_img, type, make, product_description, user_id}
         db.add_Product(item).then(resp => {
-            console.log(3333333333, resp)
             res.status(200).send(resp)
         })
     },
@@ -20,7 +18,6 @@ module.exports = {
     getMyStore: (req, res) => {
         const db = req.app.get('db');
         const {user_id} = req.session.user
-        console.log(req.session.user)
 
         db.getMyStore({user_id}).then(resp => {
             res.status(200).send(resp)

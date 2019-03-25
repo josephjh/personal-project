@@ -13,20 +13,21 @@ class Profile extends Component {
       }
       return (
         <React.Fragment>
-            <div className="container profile">
-              <div ></div>
+          <div className='profile-body'>
+            <div className="container-profile">
                 <div className='section1'>
-                  <div>Order History:</div>
+                  <h2>Account Details:
+                    <hr></hr>
+                    <h4 className='info'>{this.props.user.first_name} {this.props.user.last_name}</h4>
+                    <h4 className='info'>{this.props.user.username}</h4>
+                    <h4 className='info'>{this.props.user.email}</h4>
+                  </h2>
                 </div>
                 <div className='section2'>
-                  <div>Account Details:
-                    <div className='info'>{this.props.user.first_name} {this.props.last_name}</div>
-                    <div className='info'>{this.props.user.username}</div>
-                    <div className='info'>{this.props.user.email}</div>
-                  </div>
+                  <Link to='/mystore' id='store' style={{textDecoration:'none'}}><h2>My Store</h2></Link>
                 </div>
-              <Link to='/mystore' id='store' style={{textDecoration:'none'}}><div>My Store</div></Link>
             </div>
+          </div>
         </React.Fragment>
       );
     };

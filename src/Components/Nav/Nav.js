@@ -16,11 +16,9 @@ class Nav extends Component {
     render() {
         return(
             <div className='nav-bar'>
-                <hr></hr>
-                <div>
+                <div className='link1'>
                     <Link to='/' style={{textDecoration:'none', fontSize:40}}><i className='fas fa-truck-monster' ></i></Link>
                 </div>
-                <hr></hr>
                 <div className='search-bar'>
                     <SearchBar/>
                 </div>

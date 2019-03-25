@@ -31,19 +31,20 @@ class Products extends Component {
   }
 
   handleSearch(product) {
-    if(!this.searchkey){
+    const params = new URLSearchParams(this.props.location.search);
+    const searchKey = params.get('search') ? params.get('search').toLowerCase() : null;
+    console.log(searchKey)
+    if(!searchKey){
+      console.log('hit')
       return true
     }
-    
-    return (product.product_name && product.product_name.toLowerCase().includes(this.searchKey))
-      || (product.product_description && product.product_description.toLowerCase().includes(this.searchKey))
-      || (product.type && product.type.toLowerCase().includes(this.searchKey))
-      || (product.model && product.model.toLowerCase().includes(this.searchKey))
+    return (product.product_name && product.product_name.toLowerCase().includes(searchKey))
+      || (product.product_description && product.product_description.toLowerCase().includes(searchKey))
+      || (product.type && product.type.toLowerCase().includes(searchKey))
+      || (product.model && product.model.toLowerCase().includes(searchKey))
   }
 
     render() {
-      const params = new URLSearchParams(this.props.location.search);
-      this.searchKey = params.get('search') ? params.get('search').toLowerCase() : null;
 
       return (
         <div className="Products">

@@ -7,10 +7,12 @@ export default function StoreProducts(props){
             <StoreProduct
               key={product.product_id}
               id={product.product_id}
+              type={product.type}
+              make={product.make}
               product_name={product.product_name}
               product_img={product.product_img}
               price={product.price}
-              description={product.product_description}
+              product_description={product.product_description}
               delete={props.delete}
               update={props.update}
             />

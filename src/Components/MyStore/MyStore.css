@@ -1,3 +1,20 @@
-.store-product{
-    
+:root {
+    --mainBlue:#2a2a72;
+    --lightBlue:#009ffd;
+    --mainWhite:#f3f3f3;
+    --mainDark:#232528;
+    --mainYellow:#ffa400;
+}
+
+.container {
+    padding: 25px 0
+}
+
+.add-new-product-button {
+    border: none;
+    background: #073277;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #ffffff;
 }

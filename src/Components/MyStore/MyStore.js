@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './MyStore.css';
 import axios from 'axios';
 import StoreProducts from '../StoreProducts/StoreProducts';
+import './MyStore.css'
 
 class MyStore extends Component {
   constructor(){
@@ -65,28 +66,30 @@ class MyStore extends Component {
     }
 
     render() {
-      console.log(this.state.products)
+      console.log(50000, this.state.products)
       return (
         <div className="MyStore">
-          <form onSubmit={this.addProduct}>
-            <select required defaultValue='' name='type'>
+          <hr></hr>
+          <form className='container'onSubmit={this.addProduct}>
+            <select className='select-box'required defaultValue='' name='type'>
               <option disabled defaultValue=''>-Select Type-</option>
               <option defaultValue='Accessories'>Accessories</option>
-              <option defaultValue='Performance'>Armor</option>
+              <option defaultValue='Camping'>Camping</option>
               <option defaultValue='Exterior'>Exterior</option>
               <option defaultValue='Interior'>Interior</option>
               <option defaultValue='Lighting'>Lighting</option> 
+              <option defaultValue='Performance'>Performance</option>
               <option defaultValue='Recovery Gear'>Recovery Gear</option>
               <option defaultValue='Swag'>Swag</option>
-              <option defaultValue='Camping'>Camping</option>
-              <option defaultValue='Sound System'>Sound System</option>
             </select>
-            <select required defaultValue='' name='make'>
+            <select className='select-box' required defaultValue='' name='make'>
               <option disabled defaultValue=''>-Select Make-</option>
               <option defaultValue='Chevy'>Chevy</option>
               <option defaultValue='Ford'>Ford</option>
+              <option defaultValue='Hummer'>Hummer</option>
               <option defaultValue='Jeep'>Jeep</option>
               <option defaultValue='LandRover'>Land Rover</option>
+              <option defaultValue='Suzuki'>Suzuki</option>
               <option defaultValue='Toyota'>Toyota</option>
               <option defaultValue='Other'>Other</option>
             </select>
@@ -94,8 +97,9 @@ class MyStore extends Component {
             <input name='price' placeholder='Price'/>
             <input name='product_image'  placeholder='Product Image'/>
             <input name='description' placeholder='Description'/>
-            <button type='submit'>Add Item</button>
+            <button type='submit' className='add-new-product-button'>Add Item</button>
           </form>
+          <hr></hr>
             <StoreProducts className='store-product' update={this.updateProduct} delete={this.deleteProduct} products={this.state.products}/>
         </div>
       );
