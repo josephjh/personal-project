@@ -6,6 +6,10 @@
     --mainYellow:#ffa400;
 }
 
+.Cart {
+    height: 60vh
+}
+
 .Cart .container {
     justify-content: flex-start;
     font-family: 'Righteous', cursive;
