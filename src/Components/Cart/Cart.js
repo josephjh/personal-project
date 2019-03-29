@@ -22,7 +22,9 @@ class Cart extends Component {
     let total = 0
     cart.forEach(item => {
       total += Number(item.price)
+    
     })
+    console.log(total)
     return total
   }
 
@@ -35,22 +37,21 @@ class Cart extends Component {
 }
 
   render() {
-    console.log(757575, this.props.cart)
       return (
           <div className="Cart">
-          <div className='container'>
-          {this.props.cart.map(product => 
-            <div className='single-cart-product' key={product.product_id}>
-            <div className='cart-product-image' style={{backgroundImage: `url(${product.product_img})`}} alt='Product'></div>
-            <div className='cart-product'>{product.product_name}</div>
-            <div className='cart-product-price'> ${product.price}.00 </div>
-            <div className='cart-type'>{product.type}</div>
-            <button onClick={() => this.remove(product.cart_id)}>REMOVE</button>
+            <div className='cart-container'>
+              {this.props.cart.map(product => 
+              <div className='single-cart-product' key={product.product_id}>
+              <div className='cart-product-image' style={{backgroundImage: `url(${product.product_img})`}} alt='Product'></div>
+              <div className='cart-product'>{product.product_name}</div>
+              <div className='cart-product-price'> ${product.price}.00 </div>
+              <div className='cart-type'>{product.type}</div>
+              <button onClick={() => this.remove(product.cart_id)}>REMOVE</button>
             </div>
             )}
-            </div>
-            <div>
-              <h3>Subtotal: ${this.subTotal()}.00</h3>
+          </div>
+          <div>
+            <h3>Subtotal: ${this.subTotal()}.00</h3>
             {this.subTotal() !== 0 ? 
             <StripeCheckout
                name="UTOR"
@@ -59,14 +60,15 @@ class Cart extends Component {
                token= {this.onToken}
                stripeKey={process.env.REACT_APP_STRIPE_KEY}
                amount={(this.subTotal()*100)}
-            /> : 
+              /> 
+              :
             <h2>Cart is Empty! Go buy something!</h2>
             }
-           </div>
+          </div>
         </div>
       );
-    }
-  }
+    };
+  };
 
   function mapStateToProps(reduxState){
     return reduxState

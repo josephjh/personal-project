@@ -27,7 +27,9 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        {routes}
+        <main className='App-Body'>
+          {routes}
+        </main>
         <Footer />
       </div>
     );

@@ -10,10 +10,10 @@
     height: 60vh
 }
 
-.Cart .container {
+
+.Cart .cart-container {
     justify-content: flex-start;
     font-family: 'Righteous', cursive;
-    background: var(--mainWhite);
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;

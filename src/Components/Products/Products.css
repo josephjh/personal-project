@@ -6,10 +6,9 @@
     --mainYellow:#ffa400;
 }
 
-.Products .container {
+.Products .products-container {
     justify-content: space-between;
     font-family: 'Righteous', cursive;
-    background: var(--mainWhite);
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;

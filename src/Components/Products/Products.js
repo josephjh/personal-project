@@ -35,9 +35,7 @@ class Products extends Component {
   handleSearch(product) {
     const params = new URLSearchParams(this.props.location.search);
     const searchKey = params.get('search') ? params.get('search').toLowerCase() : null;
-    console.log(searchKey)
     if(!searchKey){
-      console.log('hit')
       return true
     }
     return (product.product_name && product.product_name.toLowerCase().includes(searchKey))
@@ -51,7 +49,7 @@ class Products extends Component {
       return (
         <div className="Products">
           <h1>Products</h1>
-          <div className='container'>
+          <div className='products-container'>
           {this.state.products.filter((product) => this.handleSearch(product)).map(product => 
             <div className='single-product' key={product.product_id}>
               <div className='image' style={{backgroundImage: `url(${product.product_img})`}} alt="Product"> </div>

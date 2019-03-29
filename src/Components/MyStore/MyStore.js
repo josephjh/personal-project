@@ -70,7 +70,7 @@ class MyStore extends Component {
       return (
         <div className="MyStore">
           <hr></hr>
-          <form className='container'onSubmit={this.addProduct}>
+          <form className='store-container'onSubmit={this.addProduct}>
             <select className='select-box'required defaultValue='' name='type'>
               <option defaultValue=''>-Select Type-</option>
               <option defaultValue='Accessories'>Accessories</option>

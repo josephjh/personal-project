@@ -9,7 +9,7 @@ class Home extends Component {
   render() {
       return (
         <div id='body' className="Home">
-          <div className='container'>
+          <div className='c-container'>
           <div className='carousel-section'>
             <div className='carousel-container'>
               <Carousel className='carousel-box'/>
